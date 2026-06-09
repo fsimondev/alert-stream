@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html,
+  body {
+    @apply bg-ink-950 text-slate-100 font-sans antialiased;
+  }
+  body {
+    margin: 0;
+  }
+  #root {
+    position: relative;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ink-700;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-600;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  /* Ambient neon aurora behind the app. */
+  .aurora::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 40% at 15% 0%, rgba(169, 112, 255, 0.18), transparent 70%),
+      radial-gradient(50% 40% at 100% 10%, rgba(83, 252, 24, 0.12), transparent 70%),
+      radial-gradient(60% 50% at 50% 100%, rgba(255, 59, 92, 0.08), transparent 70%);
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/[0.06] bg-ink-850/70 backdrop-blur;
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl px-3.5 py-2
+      text-sm font-semibold transition active:scale-[0.98]
+      disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-br from-twitch to-fuchsia-600 text-white shadow-glow-twitch
+      hover:brightness-110;
+  }
+  .btn-kick {
+    @apply bg-gradient-to-br from-kick to-emerald-500 text-ink-950 shadow-glow-kick
+      hover:brightness-105;
+  }
+  .btn-ghost {
+    @apply bg-white/[0.05] text-slate-200 hover:bg-white/[0.1];
+  }
+  .btn-danger {
+    @apply bg-white/[0.04] text-slate-400 hover:bg-live/15 hover:text-live;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-ink-900/80 px-3.5 py-2.5 text-sm
+      text-slate-100 placeholder:text-slate-500 outline-none transition
+      focus:border-twitch/60 focus:ring-2 focus:ring-twitch/20;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold;
+  }
+}

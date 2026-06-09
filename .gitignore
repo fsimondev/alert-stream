@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.keys/
+coverage/
+playwright-report/
+test-results/
+*.local
+.DS_Store
+# Generated binary assets (regenerated via `npm run gen:assets`)
+icons/
+sounds/
+.claude/

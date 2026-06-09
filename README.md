@@ -29,42 +29,6 @@ L'icône LiveWatch apparaît dans la barre d'outils.
 
 ---
 
-## Configuration Twitch (une seule fois)
-
-Twitch EventSub exige un **Client ID** d'application (gratuit). Kick ne nécessite **aucune** configuration.
-
-L'ID de l'extension est **figé** (clé publique dans le manifest), donc l'URL de redirection OAuth est **permanente** :
-
-```
-https://nlifpnmpnelmhdkppjpgnlhfnolofpgd.chromiumapp.org/
-```
-
-1. Va sur **https://dev.twitch.tv/console/apps/create**
-2. Crée une application :
-   - **Name** : ce que tu veux (ex. « LiveWatch perso »)
-   - **OAuth Redirect URLs** : colle l'URL ci-dessus (aussi affichée + bouton « Copier » dans les réglages)
-   - **Category** : *Application Integration*
-   - **Client Type** : *Public*
-3. Copie le **Client ID** généré.
-4. Dans l'extension → **Réglages** → colle le Client ID → **Se connecter avec Twitch**.
-
-### Connexion en un clic (optionnel)
-
-Pour supprimer complètement l'étape « coller le Client ID », renseigne ton Client ID dans
-[`src/lib/config.ts`](src/lib/config.ts) :
-
-```ts
-export const DEFAULT_TWITCH_CLIENT_ID = 'ton_client_id'
-```
-
-Rebuild (`npm run build`) : l'écran de réglages devient un simple bouton **« Se connecter avec
-Twitch »** (le champ Client ID passe dans « Avancé »). C'est exactement l'expérience des web apps
-qui « ouvrent une page et demandent l'autorisation » — leur Client ID est juste pré-intégré comme
-ici. La clé qui fige l'ID est régénérable via `node scripts/gen-key.mjs --force` (la redirect URI
-changera alors).
-
----
-
 ## Utilisation
 
 1. Clique l'icône pour ouvrir le **popup**.
